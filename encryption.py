@@ -1,4 +1,3 @@
-import os
 from hashlib import sha256
 from Cryptodome.Cipher import AES
 from Cryptodome.Util.Padding import pad, unpad
@@ -8,7 +7,7 @@ def generate_aes_key(keyword):
     return sha256(keyword.encode()).digest()
 
 # Encrypt data
-def encrypt_aes(plaintext, keyword):
+def encrypt(plaintext, keyword):
     key = generate_aes_key(keyword)
     cipher = AES.new(key, AES.MODE_CBC)
     ct_bytes = cipher.encrypt(pad(plaintext.encode('utf-8'), AES.block_size))
@@ -16,7 +15,7 @@ def encrypt_aes(plaintext, keyword):
     return (iv + ct_bytes).hex()
 
 # Decrypt data
-def decrypt_aes(ciphertext_hex, keyword):
+def decrypt(ciphertext_hex, keyword):
     key = generate_aes_key(keyword)
     iv_ct = bytes.fromhex(ciphertext_hex)
     iv = iv_ct[:16]
