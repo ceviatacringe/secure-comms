@@ -8,7 +8,7 @@ DELAY = 0.005
 
 def main():
     encrypt_hotkey = 'insert'
-    decrypt_hotkey = 'home'
+    decrypt_hotkey = 'f2'
     keyword = input("Encryption key generation word: ")
     clear()
     while True:
