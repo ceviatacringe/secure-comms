@@ -20,12 +20,18 @@ def get_hotkey():
         return key
 
 
-def instructions():
+def instructions(encrypt_hotkey: str, decrypt_hotkey: str) -> None:
     # Print instructions
-    print("The keyword generates an AES key.")
-    print("The key is used to encrypt messages over plaintext")
+    print("The keyword generates an encryption key.")
+    print("To decrypt a message, you need to use the same key that was used to encrypt it.")
     print("If you and somebody else have the same key, you can send messages back and forth.\n")
-    input("Press enter to exit...")
+    print("\n\nEncryption:\nWrite text in a communication app (such as discord)")
+    print(f"Press your encryption hotkey ({encrypt_hotkey}) to encrypt and send a message")
+    print("\n\nDecryption:\nHover over the encrypted text (drag with your cursor)")
+    print(f"Press your decryption hotkey ({decrypt_hotkey}) for it to decrypt")
+    print('If you have "write decrypted text" enabled:')
+    print("It will paste it in your discord text bar so that you can read it without checking the terminal")
+    input("\n\nPress enter to exit...")
 
 
 def copy(delay: float) -> None:
