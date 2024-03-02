@@ -2,6 +2,7 @@ from menufunctions import *
 from encryption import generate_aes_key
 import colored
 
+
 # Delay time (seconds) between virtual keyboard usage 
 # The lower the faster, too low and it might break depending on your specs.
 DELAY = 0.007
