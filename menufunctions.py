@@ -37,6 +37,8 @@ def runner(encrypt_hotkey: str, decrypt_hotkey: str, keyword: str, delay: float,
         event = keyboard.read_event()
         if event.event_type == keyboard.KEY_DOWN:
             if event.name == encrypt_hotkey:
+                # Save the current clipboard
+                normal_clipboard = pyperclip.paste()
                 print("Encrypting")
                 # Copy text from selection
                 copy(delay)
@@ -48,7 +50,11 @@ def runner(encrypt_hotkey: str, decrypt_hotkey: str, keyword: str, delay: float,
                 keyboard.write(encrypted)
                 # Send encrypted text
                 keyboard.press_and_release('enter')
+                # Reset to the old clipboard
+                pyperclip.copy(normal_clipboard)
             elif event.name == decrypt_hotkey:
+                # Save the current clipboard
+                normal_clipboard = pyperclip.paste()
                 print("Decrypting")
                 # Get selection
                 keyboard.press_and_release('control+c')
@@ -61,5 +67,7 @@ def runner(encrypt_hotkey: str, decrypt_hotkey: str, keyword: str, delay: float,
                         keyboard.write(decrypted)
                 except:
                     print("Invalid key or selection ")
+                # Reset to the old clipboard
+                pyperclip.copy(normal_clipboard)
 
         
