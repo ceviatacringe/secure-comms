@@ -11,7 +11,7 @@ def main():
     decrypt_hotkey = 'f2'
     keyword = input("Encryption key generation word: ")
     # Takes the decrypted text, and pastes it whever you're hovering so that you can see it directly in your app
-    write_display = False
+    write_display = True
     clear()
     while True:
         # Print basic menu
@@ -53,7 +53,8 @@ def main():
         elif choice == '6':
             # Print instructions
             clear()
-            instructions()
+            instructions(encrypt_hotkey, decrypt_hotkey)
+            clear()
         elif choice == '7':
             # Exit
             clear()
