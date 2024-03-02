@@ -68,7 +68,7 @@ def runner(encrypt_hotkey: str, decrypt_hotkey: str, keyword: str, delay: float,
                 print("Decrypting")
                 # Get selection
                 keyboard.press_and_release('control+c')
-                time.sleep(0.05)
+                time.sleep(0.12)
                 # Decrypt
                 try:
                     decrypted = decrypt(pyperclip.paste(),keyword)
