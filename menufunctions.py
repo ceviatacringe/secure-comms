@@ -31,7 +31,7 @@ def copy(delay: float) -> None:
     keyboard.press_and_release('control+c')
 
 
-def runner(encrypt_hotkey: str, decrypt_hotkey: str, keyword: str, delay: float) -> None:
+def runner(encrypt_hotkey: str, decrypt_hotkey: str, keyword: str, delay: float, DISPLAY: bool) -> None:
     while True:
         # Scan for hotkey
         event = keyboard.read_event()
@@ -55,7 +55,10 @@ def runner(encrypt_hotkey: str, decrypt_hotkey: str, keyword: str, delay: float)
                 time.sleep(0.05)
                 # Decrypt
                 try:
-                    print(decrypt(pyperclip.paste(),keyword))
+                    decrypted = decrypt(pyperclip.paste(),keyword)
+                    print(decrypted)
+                    if DISPLAY:
+                        keyboard.write(decrypted)
                 except:
                     print("Invalid key or selection ")
 

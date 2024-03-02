@@ -5,6 +5,10 @@ from encryption import generate_aes_key
 # The lower the faster, too low and it might break depending on your specs.
 DELAY = 0.005
 
+# It will take the decrypted text, and paste it whever you're hovering
+# So that you can see what was written directly in your app, instead of checking the terminal.
+WRITE_DISPLAYED = True
+
 
 def main():
     encrypt_hotkey = 'insert'
@@ -21,14 +25,12 @@ def main():
         print("4. Change decryption hotkey")
         print("5. Instructions\n")
         print("6. Exit\n")
-
         choice = input()
-
         if choice == '1':
             clear()
             print(f"Encrypt: {encrypt_hotkey}")
             print(f"Decrypt: {decrypt_hotkey}")
-            runner(encrypt_hotkey, decrypt_hotkey, keyword, DELAY)
+            runner(encrypt_hotkey, decrypt_hotkey, keyword, DELAY, WRITE_DISPLAYED)
         elif choice == '2':
             clear()
             keyword = input("Update keyword: ")
@@ -45,6 +47,7 @@ def main():
             clear()
             print("Exiting.")
             break
+
 
 if __name__ == "__main__":
     main()
