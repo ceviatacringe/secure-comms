@@ -1,51 +1,64 @@
 from menufunctions import *
 from encryption import generate_aes_key
+import colored
 
 # Delay time (seconds) between virtual keyboard usage 
 # The lower the faster, too low and it might break depending on your specs.
-DELAY = 0.005
+DELAY = 0.007
 
 
-def main():
+green = colored.fg(10)
+white = colored.fg(15)
+red = colored.fg(1)
+
+
+def main() -> None:
     encrypt_hotkey = 'insert'
+    # Don't use a key that can be typed (use a function key)
     decrypt_hotkey = 'f2'
-    keyword = input("Encryption key generation word: ")
+    keyword = input("Encryption key generation word: " + green)
     # Takes the decrypted text, and pastes it whever you're hovering so that you can see it directly in your app
     write_display = True
     clear()
     while True:
         # Print basic menu
-        print(f"Keyword: {keyword}")
-        print(f"Encrypt hotkey: {encrypt_hotkey}")
-        print(f"Decrypt hotkey: {decrypt_hotkey}\n")
-        print("1. Start")
-        print("2. Change keyword")
-        print("3. Change encryption hotkey")
-        print("4. Change decryption hotkey")
-        print(f"5. Write decrypted text: {write_display}")
-        print("6. Instructions\n")
-        print("7. Exit\n")
+        print(f"{white}Secure comms {colored.fg(8)}by ceviatacringe\n\n")
+        print(f"{green}Keyword: {white}{keyword}")
+        print(f"{green}Encrypt hotkey: {white}{encrypt_hotkey}")
+        print(f"{green}Decrypt hotkey: {white}{decrypt_hotkey}\n")
+        print(f"{green}1. {white}Start")
+        print(f"{green}2. {white}Change keyword")
+        print(f"{green}3. {white}Change encryption hotkey")
+        print(f"{green}4. {white}Change decryption hotkey")
+        if write_display:
+            print(f"{green}5. {white}Write decrypted text: {green}{write_display}")
+        else:
+            print(f"{green}5. {white}Write decrypted text: {red}{write_display}")
+        print(f"{green}6. {white}Instructions\n")
+        print(f"{green}7. {white}Exit\n")
         # User input menu interaction
         choice = input()
         if choice == '1':
             # Runs main encryption/decryption loop
             clear()
-            print(f"Encrypt: {encrypt_hotkey}")
-            print(f"Decrypt: {decrypt_hotkey}")
+            print(f"{green}Encrypt{white}: {encrypt_hotkey}")
+            print(f"{green}Decrypt{white}: {decrypt_hotkey}\n\n")
             runner(encrypt_hotkey, decrypt_hotkey, keyword, DELAY, write_display)
         elif choice == '2':
             # Change keyword
             clear()
-            keyword = input("Update keyword: ")
+            keyword = input(f"{green}Update keyword: {white}")
             clear()
         elif choice == '3':
             # Change encrypt hotkey
             clear()
             encrypt_hotkey = get_hotkey()
+            clear()
         elif choice == '4':
             # Change decrypt hotkey
             clear()
             decrypt_hotkey = get_hotkey()
+            clear()
         elif choice == '5':
             # Updates the option for write_display
             write_display = not write_display
@@ -58,7 +71,7 @@ def main():
         elif choice == '7':
             # Exit
             clear()
-            print("Exiting.")
+            print(f"{red}Exiting.{white}")
             break
 
 
