@@ -8,9 +8,8 @@ This is a Python-based symmetric encryption tool designed to secure your message
 ## Features
 
 - **Secure Encryption**: Utilizes AES-256 for encryption.
-- **Easy-to-Use**: Simple interface for encrypting and decrypting text.
-- **Hotkey Support**: Encrypt and decrypt text using designated hotkeys.
-- **Clipboard Integration**: Semi-automatically encrypts or decrypts clipboard contents.
+- **Easy-to-Use**: Simple interface.
+- **Hotkey Support**: Use hotkeys for conveniency and efficiency
 - Cool colors 🥳
 
 ## Installation
