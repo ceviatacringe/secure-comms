@@ -4,12 +4,12 @@ from Cryptodome.Util.Padding import pad, unpad
 
 
 # Generate a 32-byte (256-bit) AES key from the keyword
-def generate_aes_key(keyword):
+def generate_aes_key(keyword: str) -> bytes:
     return sha256(keyword.encode()).digest()
 
 
 # Encrypt data
-def encrypt(plaintext, keyword):
+def encrypt(plaintext: str, keyword: str) -> str:
     key = generate_aes_key(keyword)
     cipher = AES.new(key, AES.MODE_ECB)
     # Pad the plaintext to be a multiple of the block size
@@ -19,7 +19,7 @@ def encrypt(plaintext, keyword):
 
 
 # Decrypt data
-def decrypt(ciphertext_hex, keyword):
+def decrypt(ciphertext_hex: str, keyword: str) -> str:
     key = generate_aes_key(keyword)
     ct_bytes = bytes.fromhex(ciphertext_hex)
     cipher = AES.new(key, AES.MODE_ECB)
