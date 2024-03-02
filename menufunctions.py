@@ -39,8 +39,17 @@ def runner(encrypt_hotkey, decrypt_hotkey, keyword, delay):
                 print("Encrypting")
                 copy(delay)
                 time.sleep(0.02)
-                print(pyperclip.paste())
+                encrypted = encrypt(pyperclip.paste(), keyword)
+                keyboard.press_and_release('control+a')
+                keyboard.write(encrypted)
+                keyboard.press_and_release('enter')
             elif event.name == decrypt_hotkey:
                 print("Decrypting")
+                keyboard.press_and_release('control+c')
+                time.sleep(0.05)
+                try:
+                    print(decrypt(pyperclip.paste(),keyword))
+                except:
+                    print("Invalid key or selection ")
 
         
