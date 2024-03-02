@@ -25,28 +25,35 @@ def instructions():
     input("Press enter to exit...")
 
 
-def copy(delay):
+def copy(delay: float) -> None:
     keyboard.press_and_release('control+a')
     time.sleep(delay)
     keyboard.press_and_release('control+c')
 
 
-def runner(encrypt_hotkey, decrypt_hotkey, keyword, delay):
+def runner(encrypt_hotkey: str, decrypt_hotkey: str, keyword: str, delay: float) -> None:
     while True:
+        # Scan for hotkey
         event = keyboard.read_event()
         if event.event_type == keyboard.KEY_DOWN:
             if event.name == encrypt_hotkey:
                 print("Encrypting")
+                # Copy text from selection
                 copy(delay)
                 time.sleep(0.02)
+                # Encrypt selection
                 encrypted = encrypt(pyperclip.paste(), keyword)
+                # Type Encrypted text
                 keyboard.press_and_release('control+a')
                 keyboard.write(encrypted)
+                # Send encrypted text
                 keyboard.press_and_release('enter')
             elif event.name == decrypt_hotkey:
                 print("Decrypting")
+                # Get selection
                 keyboard.press_and_release('control+c')
                 time.sleep(0.05)
+                # Decrypt
                 try:
                     print(decrypt(pyperclip.paste(),keyword))
                 except:
