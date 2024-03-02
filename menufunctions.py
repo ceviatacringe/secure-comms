@@ -80,12 +80,17 @@ def runner(encrypt_hotkey: str, decrypt_hotkey: str, keyword: str, delay: float,
                     decrypted = decrypt(pyperclip.paste(),keyword)
                     print(f"{white}[{time.strftime('%H:%M:%S', time.localtime())}] {green}Decrypted: {white}" + decrypted)
                     if DISPLAY:
+                        keyboard.press_and_release('backspace')
+                        time.sleep(0.02)
+                        keyboard.press_and_release('control+a')
+                        time.sleep(0.02)
                         keyboard.write(decrypted)
                 except:
                     print(f"{red}Invalid key or selection {white}")
                 # Reset to the old clipboard
                 pyperclip.copy(normal_clipboard)
             elif event.name == 'esc':
+                clear()
                 break
                 
 
