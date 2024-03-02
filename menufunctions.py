@@ -6,10 +6,12 @@ import pyperclip
 
 
 def clear():
+    # Clear terminal
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def get_hotkey():
+    # Update hotkey
     print("Press a key to use it as your hotkey")
     time.sleep(0.2)
     event = keyboard.read_event()
@@ -19,6 +21,7 @@ def get_hotkey():
 
 
 def instructions():
+    # Print instructions
     print("The keyword generates an AES key.")
     print("The key is used to encrypt messages over plaintext")
     print("If you and somebody else have the same key, you can send messages back and forth.\n")
@@ -26,6 +29,7 @@ def instructions():
 
 
 def copy(delay: float) -> None:
+    # Copy selection to keyboard
     keyboard.press_and_release('control+a')
     time.sleep(delay)
     keyboard.press_and_release('control+c')
@@ -69,5 +73,8 @@ def runner(encrypt_hotkey: str, decrypt_hotkey: str, keyword: str, delay: float,
                     print("Invalid key or selection ")
                 # Reset to the old clipboard
                 pyperclip.copy(normal_clipboard)
+            elif event.name == 'esc':
+                break
+                
 
         
