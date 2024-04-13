@@ -1,13 +1,15 @@
 # Symmetric Encryption Tool
 
+
+https://github.com/ceviatacringe/secure-comms/assets/160585624/8175722d-8d13-4518-8121-364d95d21443
+
 This is a Python-based symmetric encryption tool designed to secure your messages, especially when using proprietary software platforms. By encrypting your messages, you ensure that even if the platform accesses your data, and tries to breach your privacy by spying on your messages, it remains unreadable without the correct decryption key. This tool uses AES-256 encryption, providing a high level of security for your communications.
 
 ## Features
 
 - **Secure Encryption**: Utilizes AES-256 for encryption.
-- **Easy-to-Use**: Simple interface for encrypting and decrypting text.
-- **Hotkey Support**: Encrypt and decrypt text using designated hotkeys.
-- **Clipboard Integration**: Semi-automatically encrypts or decrypts clipboard contents.
+- **Easy-to-Use**: Simple interface.
+- **Hotkey Support**: Use hotkeys for conveniency and efficiency
 - Cool colors 🥳
 
 ## Installation
