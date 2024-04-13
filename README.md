@@ -8,6 +8,7 @@ This is a Python-based symmetric encryption tool designed to secure your message
 ## Features
 
 - **Secure Encryption**: Utilizes AES-256 for encryption.
+- **Salting** Each identical message has a different encrypted output
 - **Easy-to-Use**: Simple interface.
 - **Hotkey Support**: Use hotkeys for conveniency and efficiency
 - Cool colors 🥳
@@ -43,4 +44,4 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 ## Security disclaimer
 
-In a long conversation, or multiple conversations, patters can be observed since short words and sentences are encrypted the same way each time while using the same keyword, so if somebody wanted to, they could analyze the patterns and try to figure out vague things based on behavioral analysis. They will not however be able to decrypt the data and read the messages themselves unless they have the keyword.
+The security of this app hinges on the strength of the initial passkey, which can be brute forced, all though I implemented measures against brute forcing, it's still possible.
